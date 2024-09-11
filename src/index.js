@@ -6,12 +6,14 @@ dotenv.config();
 const ErrorHandler = require("./middlewares/ErrorHandler");
 const { runMigrations } = require("./migration");
 const tasksRoute = require("./routes/tasks");
+const reportsRoute = require("./routes/reports");
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(bodyParser.json());
 app.use("/api/tasks", tasksRoute);
+app.use("/api/reports", reportsRoute);
 
 app.use(ErrorHandler);
 
