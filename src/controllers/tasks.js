@@ -1,3 +1,4 @@
+const { requestSchemaForCreate, requestSchemaForUpdateStatus } = require("../validators/requestValidator");
 const taskService = require("../services/task");
 
 module.exports = {
@@ -22,6 +23,9 @@ module.exports = {
 
   updateStatus: async (req, res, next) => {
     try {
+      const { error } = requestSchemaForUpdateStatus.validate(req);
+      if (error) throw error;
+
       const { params: { id }, body: { status } } = req;
       const updateRes = await taskService.updateStatus(id, status);
 
@@ -33,6 +37,9 @@ module.exports = {
 
   createTask: async (req, res, next) => {
     try {
+      const { error } = requestSchemaForCreate.validate(req);
+      if (error) throw error;
+
       const { data } = req.body;
       const createRes = await taskService.createOne(data);
 
