@@ -38,4 +38,12 @@ module.exports = {
         .error(() => new ValidationError("Status must be number")),
     }),
   }).unknown(true),
+
+  requestSchemaForReports: Joi.object({
+    params: Joi.object({
+      userId: Joi.string().regex(/^\d+$/).required()
+        .error(() => new ValidationError("User ID must be numeric and positive", "userId")),
+    }),
+
+  }).unknown(true),
 };

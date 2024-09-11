@@ -1,11 +1,11 @@
-// validation
+const { requestSchemaForReports } = require("../validators/requestValidator");
 const reportService = require("../services/report");
 
 module.exports = {
   getTasksByUser: async (req, res, next) => {
     try {
-      // const { error } = requestSchemaForUpdateStatus.validate(req);
-      // if (error) throw error;
+      const { error } = requestSchemaForReports.validate(req);
+      if (error) throw error;
 
       const { userId } = req.params;
       const reports = await reportService.getAllByUserId(userId);
