@@ -12,7 +12,7 @@ module.exports = {
 
   getAllCompleted: async () => {
     try {
-      return Task.findAll({ where: { status: 2 } });
+      return Task.findAndCountAll({ where: { status: 3 } });
     } catch (error) {
       console.error("Error fetching completed tasks:", error);
       throw error;

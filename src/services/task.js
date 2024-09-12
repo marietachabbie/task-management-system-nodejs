@@ -19,9 +19,9 @@ module.exports = {
     }
   },
 
-  updateStatus: async (id, status) => {
+  updateStatus: async (id, status, completed_at) => {
     try {
-      await Task.update({ status }, { where: { id } });
+      await Task.update({ status, completed_at }, { where: { id } });
       return { message: `Successfully updated status of the task with id: ${id}` };
     } catch (error) {
       console.error("Error updating a task:", error);

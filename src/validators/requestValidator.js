@@ -44,6 +44,5 @@ module.exports = {
       userId: Joi.string().regex(/^\d+$/).required()
         .error(() => new ValidationError("User ID must be numeric and positive", "userId")),
     }),
-
   }).unknown(true),
 };

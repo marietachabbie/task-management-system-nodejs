@@ -27,7 +27,7 @@ module.exports = {
       if (error) throw error;
 
       const { params: { id }, body: { status } } = req;
-      const updateRes = await taskService.updateStatus(id, status);
+      const updateRes = await taskService.updateStatus(id, status, new Date());
 
       res.status(201).json(updateRes);
     } catch (error) {
