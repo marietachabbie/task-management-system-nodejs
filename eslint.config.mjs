@@ -11,7 +11,10 @@ export default [
         ...globals.node,
       },
     },
-    ...pluginJs.configs.recommended,
+    extends: [
+      "plugin:jest/recommended",
+      ...pluginJs.configs.recommended
+    ],
     rules: {
       "array-bracket-spacing": ["error", "always", { objectsInArrays: false }],
       "arrow-spacing": "error",

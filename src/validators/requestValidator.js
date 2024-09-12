@@ -8,6 +8,7 @@ class ValidationError extends Error {
 }
 
 module.exports = {
+  validationError: ValidationError,
   requestSchemaForCreate: Joi.object({
     body: Joi.object({
       data: Joi.object({
